@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supletivo Rápido — Ensino Médio 100% Online com Certificado MEC</title>
+  <meta name="description" content="Conclua o Ensino Médio 100% online com certificado reconhecido pelo MEC. Desde 2017, formando alunos em todo o Brasil.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,600;1,9..144,700;1,9..144,900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       CSS VARIABLES & RESET
+    ============================================================ */
+    :root {
+      --orange:       #F47920;
+      --orange-dark:  #D96510;
+      --orange-light: #FEF0E3;
+      --black:        #111010;
+      --white-warm:   #FFFCF9;
+      --off-white:    #F5F1EC;
+      --gray-mid:     #6B6B6B;
+      --gray-light:   #D4D0CB;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+      --radius:       12px;
+      --radius-lg:    20px;
+      --transition:   0.3s ease;
+      --shadow-sm:    0 2px 8px rgba(0,0,0,0.08);
+      --shadow-md:    0 8px 32px rgba(0,0,0,0.12);
+      --shadow-lg:    0 20px 60px rgba(0,0,0,0.18);
+      --max-w:        1200px;
+      --section-py:   96px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-body); color: var(--black); background: var(--white-warm); overflow-x: hidden; }
+    img  { display: block; max-width: 100%; }
+    a    { color: inherit; text-decoration: none; }
+    ul   { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .container { width: 100%; max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    .placeholder-block {
+      border: 2px dashed #AAAAAA;
+      border-radius: 8px;
+      padding: 14px 18px;
+      color: #888;
+      font-size: 0.875rem;
+      font-style: italic;
+      background: rgba(200,200,200,0.07);
+      display: block;
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--black);
+      transition: box-shadow var(--transition);
+    }
+    #nav.scrolled { box-shadow: 0 2px 24px rgba(0,0,0,0.4); }
+
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px; gap: 32px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.25rem; font-weight: 700;
+      color: var(--white-warm); white-space: nowrap; letter-spacing: -0.02em;
+    }
+    .nav-logo span { font-style: italic; color: var(--orange); }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      font-size: 0.875rem; font-weight: 500;
+      color: rgba(255,252,249,0.65);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--white-warm); }
+
+    .btn-nav {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; background: var(--orange);
+      color: var(--white-warm); font-size: 0.875rem; font-weight: 600;
+      border-radius: 8px; white-space: nowrap;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .btn-nav:hover { background: var(--orange-dark); transform: translateY(-1px); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white-warm); border-radius: 2px; transition: all .3s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu { display: none; flex-direction: column; background: #1a1a1a; padding: 16px 24px 28px; gap: 2px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: rgba(255,252,249,0.75); font-size: 1rem; font-weight: 500; padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color var(--transition); }
+    .mobile-menu a:hover { color: var(--orange); }
+    .mobile-menu .btn-nav { margin-top: 16px; justify-content: center; padding: 14px 20px; font-size: 1rem; }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    #hero {
+      background: var(--black);
+      padding: 104px 0 80px;
+      position: relative; overflow: hidden;
+      min-height: 100vh; display: flex; align-items: center;
+    }
+
+    .hero-content { position: relative; z-index: 1; max-width: 720px; }
+
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; margin-bottom: 28px;
+      background: rgba(244,121,32,0.1); border: 1px solid rgba(244,121,32,0.22);
+      border-radius: 100px; color: var(--orange);
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+    }
+    .hero-label::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 900; color: var(--white-warm);
+      line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 24px;
+    }
+    .hero-title em { font-style: italic; color: var(--orange); }
+
+    .hero-subtitle {
+      font-size: 1.1rem; color: rgba(255,252,249,0.6);
+      line-height: 1.72; max-width: 520px; margin-bottom: 40px;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 60px; }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 15px 28px; background: var(--orange);
+      color: var(--white-warm); font-size: 1rem; font-weight: 600;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(244,121,32,0.35); }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 15px 28px; background: transparent;
+      color: var(--white-warm); font-size: 1rem; font-weight: 500;
+      border-radius: var(--radius); border: 1.5px solid rgba(255,252,249,0.18);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+    }
+    .btn-secondary:hover { border-color: rgba(255,252,249,0.45); background: rgba(255,252,249,0.05); transform: translateY(-2px); }
+
+    .hero-stats { display: flex; gap: 36px; flex-wrap: wrap; align-items: center; }
+    .hero-stat { display: flex; flex-direction: column; gap: 5px; }
+    .hero-stat-val {
+      font-family: var(--font-display); font-size: 1.875rem;
+      font-weight: 700; color: var(--white-warm); letter-spacing: -0.03em;
+    }
+    .hero-stat-lbl { font-size: 0.78rem; color: rgba(255,252,249,0.45); text-transform: uppercase; letter-spacing: 0.07em; }
+    .hero-stat-div { width: 1px; background: rgba(255,252,249,0.12); align-self: stretch; }
+
+    /* ============================================================
+       TICKER
+    ============================================================ */
+    #ticker { background: var(--orange); padding: 13px 0; overflow: hidden; }
+    .ticker-track {
+      display: flex; width: max-content;
+      animation: ticker-anim 30s linear infinite;
+    }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 0 36px; color: var(--white-warm);
+      font-size: 0.875rem; font-weight: 600;
+      letter-spacing: 0.04em; white-space: nowrap;
+    }
+    .ticker-sep { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,252,249,0.45); flex-shrink: 0; }
+    @keyframes ticker-anim { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* ============================================================
+       MÉTODO
+    ============================================================ */
+    #metodo { background: var(--off-white); padding: var(--section-py) 0; }
+
+    .metodo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+
+    .section-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.875rem, 3.5vw, 2.5rem);
+      font-weight: 700; color: var(--black);
+      line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 18px;
+    }
+    .section-sub { font-size: 1rem; color: var(--gray-mid); line-height: 1.72; margin-bottom: 48px; }
+
+    .steps { display: flex; flex-direction: column; gap: 24px; }
+    .step { display: flex; gap: 20px; align-items: flex-start; }
+    .step-num {
+      flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%;
+      background: var(--orange); color: var(--white-warm);
+      font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-body h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--black); margin-bottom: 6px; }
+    .step-body p  { font-size: 0.875rem; color: var(--gray-mid); line-height: 1.65; }
+
+    .metodo-card {
+      background: var(--black); border-radius: var(--radius-lg);
+      padding: 44px 40px; color: var(--white-warm);
+      position: sticky; top: 96px;
+    }
+    .metodo-card-hd { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+    .metodo-card-icon {
+      width: 44px; height: 44px; background: var(--orange); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.25rem;
+    }
+    .metodo-card-hd h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; line-height: 1.3; }
+    .metodo-card p.lead { font-size: 0.875rem; color: rgba(255,252,249,0.55); line-height: 1.72; margin-bottom: 24px; }
+
+    /* ============================================================
+       COMO FUNCIONA
+    ============================================================ */
+    #como-funciona { background: var(--black); padding: var(--section-py) 0; }
+    #como-funciona .section-title { color: var(--white-warm); }
+    #como-funciona .section-sub   { color: rgba(255,252,249,0.5); margin-bottom: 0; }
+    .como-hd { text-align: center; max-width: 540px; margin: 0 auto 64px; }
+
+    .como-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; position: relative; }
+    .como-line {
+      position: absolute; top: 40px; left: 12.5%; right: 12.5%; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(244,121,32,0.35) 15%, rgba(244,121,32,0.35) 85%, transparent 100%);
+    }
+    .como-card { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; position: relative; }
+    .como-num {
+      width: 80px; height: 80px; border-radius: 50%;
+      border: 2px solid var(--orange);
+      background: rgba(244,121,32,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--orange);
+      margin-bottom: 24px; position: relative; z-index: 1;
+      transition: background var(--transition), transform var(--transition);
+    }
+    .como-card:hover .como-num { background: rgba(244,121,32,0.18); transform: scale(1.06); }
+    .como-card h4 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; color: var(--white-warm); margin-bottom: 10px; }
+    .como-card p  { font-size: 0.85rem; color: rgba(255,252,249,0.48); line-height: 1.65; }
+
+    /* ============================================================
+       VALORES
+    ============================================================ */
+    #valores { background: var(--white-warm); padding: var(--section-py) 0; }
+    .valores-hd { text-align: center; max-width: 520px; margin: 0 auto 64px; }
+    .valores-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .valor-card {
+      padding: 36px 30px; border-radius: var(--radius-lg);
+      border: 1.5px solid var(--off-white);
+      transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+    }
+    .valor-card:hover { border-color: rgba(244,121,32,0.28); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .valor-icon {
+      width: 54px; height: 54px; border-radius: 14px;
+      background: var(--orange-light); font-size: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+    }
+    .valor-card h4 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--black); margin-bottom: 10px; }
+    .valor-card p  { font-size: 0.875rem; color: var(--gray-mid); line-height: 1.65; }
+
+    /* ============================================================
+       DEPOIMENTOS
+    ============================================================ */
+    #depoimentos { background: var(--off-white); padding: var(--section-py) 0; }
+    .depo-hd { text-align: center; max-width: 520px; margin: 0 auto 64px; }
+    .depo-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .depo-card {
+      background: var(--white-warm); border-radius: var(--radius-lg);
+      padding: 32px 28px; box-shadow: var(--shadow-sm);
+      display: flex; flex-direction: column; gap: 18px;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .depo-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .depo-stars { color: var(--orange); font-size: 0.95rem; letter-spacing: 2px; }
+    .depo-text  { font-size: 0.9rem; color: var(--gray-mid); line-height: 1.72; font-style: italic; flex: 1; }
+    .depo-author { display: flex; align-items: center; gap: 12px; }
+    .depo-avatar {
+      flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%;
+      background: var(--orange); color: var(--white-warm);
+      font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .depo-meta strong { display: block; font-size: 0.875rem; font-weight: 600; color: var(--black); }
+    .depo-meta span   { font-size: 0.78rem; color: var(--gray-mid); }
+
+    /* ============================================================
+       SOBRE NÓS
+    ============================================================ */
+    #sobre { background: var(--white-warm); padding: var(--section-py) 0; }
+    .sobre-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 72px; align-items: center; }
+    .sobre-card {
+      background: var(--orange); border-radius: var(--radius-lg);
+      padding: 56px 40px; text-align: center; color: var(--white-warm);
+    }
+    .sobre-card .since { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; margin-bottom: 6px; }
+    .sobre-card .year  { font-family: var(--font-display); font-size: 6rem; font-weight: 900; line-height: 1; letter-spacing: -0.05em; }
+    .sobre-card .tag   { font-style: italic; font-size: 0.975rem; opacity: 0.82; margin-top: 16px; line-height: 1.5; }
+    .sobre-right p { font-size: 1rem; color: var(--gray-mid); line-height: 1.8; margin-bottom: 32px; }
+    .sobre-diffs { display: flex; flex-direction: column; gap: 14px; }
+    .sobre-diff { display: flex; align-items: flex-start; gap: 12px; font-size: 0.925rem; color: var(--black); line-height: 1.6; }
+    .check-circle {
+      flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(244,121,32,0.1); color: var(--orange);
+      font-size: 0.72rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; margin-top: 1px;
+    }
+
+    /* ============================================================
+       CERTIFICADO MEC
+    ============================================================ */
+    #certificado { background: var(--off-white); padding: var(--section-py) 0; }
+    .cert-wrap { max-width: 700px; margin: 0 auto; text-align: center; }
+    .cert-card {
+      background: var(--white-warm); border-radius: var(--radius-lg);
+      padding: 64px 56px; box-shadow: var(--shadow-md);
+      border: 1.5px solid rgba(244,121,32,0.14);
+    }
+    .cert-icon  { font-size: 3.5rem; margin-bottom: 24px; }
+    .cert-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700; color: var(--black);
+      letter-spacing: -0.03em; margin-bottom: 18px; line-height: 1.25;
+    }
+    .cert-body  { font-size: 1rem; color: var(--gray-mid); line-height: 1.75; margin-bottom: 32px; }
+    .cert-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+    .cert-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 6px 14px; background: var(--orange-light);
+      color: var(--orange-dark); font-size: 0.78rem; font-weight: 600; border-radius: 100px;
+    }
+
+    /* ============================================================
+       INVESTIMENTO
+    ============================================================ */
+    #investimento { background: var(--black); padding: var(--section-py) 0; }
+    .invest-wrap  { max-width: 660px; margin: 0 auto; text-align: center; }
+    .invest-card  {
+      background: #191919; border-radius: var(--radius-lg);
+      padding: 60px 52px; border: 1px solid rgba(244,121,32,0.18);
+      position: relative; overflow: hidden;
+    }
+    .invest-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+    }
+    .invest-badge {
+      display: inline-block; padding: 5px 16px; margin-bottom: 28px;
+      background: rgba(244,121,32,0.1); border: 1px solid rgba(244,121,32,0.28);
+      border-radius: 100px; color: var(--orange);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+    }
+    .invest-from  { font-size: 0.8rem; color: rgba(255,252,249,0.4); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+    .invest-price {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 4.5rem);
+      font-weight: 900; color: var(--white-warm);
+      letter-spacing: -0.04em; line-height: 1; margin-bottom: 6px;
+    }
+    .invest-price sup { font-size: 0.42em; vertical-align: super; font-weight: 600; }
+    .invest-price-note { font-size: 0.85rem; color: rgba(255,252,249,0.38); margin-bottom: 36px; }
+    .invest-divider { width: 44px; height: 2px; background: rgba(244,121,32,0.38); margin: 0 auto 32px; border-radius: 2px; }
+    .invest-perks { display: flex; flex-direction: column; gap: 14px; text-align: left; margin-bottom: 40px; }
+    .invest-perk  { display: flex; align-items: center; gap: 12px; font-size: 0.925rem; color: rgba(255,252,249,0.72); }
+    .invest-perk-ic {
+      flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+      background: rgba(244,121,32,0.1); color: var(--orange);
+      font-size: 0.72rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .btn-big {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      padding: 18px 36px; background: var(--orange); color: var(--white-warm);
+      font-size: 1.05rem; font-weight: 700; border-radius: var(--radius); width: 100%;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-big:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(244,121,32,0.4); }
+
+    /* ============================================================
+       FAQ
+    ============================================================ */
+    #faq { background: var(--white-warm); padding: var(--section-py) 0; }
+    .faq-hd   { text-align: center; max-width: 520px; margin: 0 auto 64px; }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { border: 1.5px solid var(--gray-light); border-radius: var(--radius); overflow: hidden; transition: border-color var(--transition); }
+    .faq-item.open { border-color: rgba(244,121,32,0.38); }
+    .faq-q {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 26px; background: var(--white-warm); text-align: left;
+      font-size: 0.95rem; font-weight: 600; color: var(--black); gap: 20px;
+      transition: background var(--transition), color var(--transition);
+    }
+    .faq-q:hover { background: var(--off-white); }
+    .faq-item.open .faq-q { background: var(--off-white); color: var(--orange); }
+    .faq-chevron {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      background: var(--off-white); display: flex; align-items: center; justify-content: center;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); background: rgba(244,121,32,0.1); }
+    .faq-chevron svg { width: 14px; height: 14px; stroke: var(--gray-mid); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .faq-item.open .faq-chevron svg { stroke: var(--orange); }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-item.open .faq-body { max-height: 400px; }
+    .faq-body-inner { padding: 0 26px 22px; font-size: 0.875rem; color: var(--gray-mid); line-height: 1.75; }
+
+    /* ============================================================
+       CTA FINAL
+    ============================================================ */
+    #cta-final { background: var(--orange); padding: var(--section-py) 0; text-align: center; position: relative; overflow: hidden; }
+    #cta-final::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 25% 50%, rgba(255,255,255,0.07) 0%, transparent 55%),
+                  radial-gradient(ellipse at 75% 50%, rgba(0,0,0,0.08) 0%, transparent 55%);
+    }
+    .cta-final-in { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .cta-final-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,252,249,0.68); margin-bottom: 18px; }
+    .cta-final-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      font-weight: 900; color: var(--white-warm);
+      line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 18px;
+    }
+    .cta-final-sub { font-size: 1.05rem; color: rgba(255,252,249,0.78); line-height: 1.65; margin-bottom: 44px; }
+    .btn-white {
+      display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+      padding: 18px 40px; background: var(--white-warm); color: var(--black);
+      font-size: 1.05rem; font-weight: 700; border-radius: var(--radius);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-white:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(0,0,0,0.2); }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer { background: var(--black); padding: 64px 0 36px; }
+    .footer-top {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 56px;
+      padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 32px;
+    }
+    .footer-tagline { font-size: 0.85rem; color: rgba(255,252,249,0.4); line-height: 1.65; max-width: 280px; margin-top: 12px; }
+    .footer-col h5  { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,252,249,0.38); margin-bottom: 18px; }
+    .footer-col ul  { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li a { font-size: 0.85rem; color: rgba(255,252,249,0.55); transition: color var(--transition); }
+    .footer-col ul li a:hover { color: var(--white-warm); }
+    .footer-btm { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy  { font-size: 0.78rem; color: rgba(255,252,249,0.28); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 0.78rem; color: rgba(255,252,249,0.32); transition: color var(--transition); }
+    .footer-legal a:hover { color: rgba(255,252,249,0.6); }
+
+    /* ============================================================
+       WHATSAPP FLOAT
+    ============================================================ */
+    .wa-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 999;
+      width: 60px; height: 60px; background: #25D366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.42);
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: wa-pulse 2.8s ease-in-out infinite;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 26px rgba(37,211,102,0.55); animation: none; }
+    .wa-float svg { width: 30px; height: 30px; fill: #fff; }
+    @keyframes wa-pulse {
+      0%,100% { box-shadow: 0 4px 18px rgba(37,211,102,0.42); }
+      50%      { box-shadow: 0 4px 18px rgba(37,211,102,0.42), 0 0 0 9px rgba(37,211,102,0.11); }
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      :root { --section-py: 72px; }
+      .metodo-grid  { grid-template-columns: 1fr; gap: 48px; }
+      .metodo-card  { position: static; }
+      .como-grid    { grid-template-columns: repeat(2,1fr); gap: 40px; }
+      .como-line    { display: none; }
+      .sobre-grid   { grid-template-columns: 1fr 1.4fr; gap: 48px; }
+      .footer-top   { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .footer-top > :first-child { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --section-py: 56px; }
+      .nav-links, .btn-nav { display: none; }
+      .hamburger { display: flex; }
+      #hero { padding: 120px 0 72px; min-height: auto; }
+      .hero-stat-div { display: none; }
+      .hero-stats { gap: 24px; }
+      .valores-grid { grid-template-columns: 1fr; }
+      .depo-grid    { grid-template-columns: 1fr; }
+      .sobre-grid   { grid-template-columns: 1fr; gap: 32px; }
+      .invest-card  { padding: 44px 28px; }
+      .cert-card    { padding: 44px 28px; }
+      .footer-top   { grid-template-columns: 1fr; gap: 36px; }
+      .footer-top > :first-child { grid-column: auto; }
+      .footer-btm   { flex-direction: column; align-items: flex-start; gap: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { justify-content: center; }
+      .como-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+     NAV
+================================================================ -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Supletivo <span>Rápido</span></a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#metodo">Método</a></li>
+        <li><a href="#como-funciona">Como Funciona</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#certificado">Certificado</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener" class="btn-nav">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar no WhatsApp
+      </a>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Menu mobile">
+    <a href="#metodo"        class="mob-link">Método</a>
+    <a href="#como-funciona" class="mob-link">Como Funciona</a>
+    <a href="#depoimentos"   class="mob-link">Depoimentos</a>
+    <a href="#certificado"   class="mob-link">Certificado</a>
+    <a href="#faq"           class="mob-link">FAQ</a>
+    <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener" class="btn-nav mob-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar no WhatsApp
+    </a>
+  </div>
+</nav>
+
+
+<!-- ================================================================
+     HERO
+================================================================ -->
+<section id="hero" aria-label="Hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="hero-title reveal reveal-d1">
+        Conclua o Ensino Médio<br>
+        <em>sem sair de casa.</em>
+      </h1>
+
+      <p class="hero-subtitle reveal reveal-d2">
+        Diploma reconhecido pelo MEC, método próprio e suporte completo para quem precisa concluir os estudos sem abrir mão da rotina.
+      </p>
+
+      <div class="hero-actions reveal reveal-d3">
+        <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Falar no WhatsApp
+        </a>
+        <a href="#como-funciona" class="btn-secondary">Saiba mais</a>
+      </div>
+
+      <!-- PLACEHOLDER: atualizar os três stats com dados reais -->
+      <div class="hero-stats reveal reveal-d4">
+        <!-- [PLACEHOLDER: substituir pelo número real de alunos formados] -->
+        <div class="hero-stat">
+          <span class="hero-stat-val">+5.000</span>
+          <span class="hero-stat-lbl">Alunos formados</span>
+        </div>
+        <div class="hero-stat-div" aria-hidden="true"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-val">Desde 2017</span>
+          <span class="hero-stat-lbl">No mercado</span>
+        </div>
+        <div class="hero-stat-div" aria-hidden="true"></div>
+        <!-- [PLACEHOLDER: inserir terceiro indicador — ex: estados atendidos, taxa de aprovação] -->
+        <div class="hero-stat">
+          <span class="hero-stat-val">100%</span>
+          <span class="hero-stat-lbl">Reconhecido MEC</span>
+        </div>
+      </div>
+    </div><!-- /hero-content -->
+  </div>
+</section>
+
+
+<!-- ================================================================
+     TICKER
+================================================================ -->
+<div id="ticker" role="marquee" aria-label="Destaques do Supletivo Rápido">
+  <div class="ticker-track">
+    <span class="ticker-item">✓ Certificado MEC</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <span class="ticker-item">✓ 100% Online</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <span class="ticker-item">✓ Desde 2017</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <!-- [PLACEHOLDER: número real de alunos formados] -->
+    <span class="ticker-item">✓ +5.000 Alunos Formados</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <span class="ticker-item">✓ Método Próprio</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <span class="ticker-item">✓ Suporte Completo</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <span class="ticker-item">✓ Estude no seu ritmo</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <!-- Duplicata para loop contínuo -->
+    <span class="ticker-item">✓ Certificado MEC</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <span class="ticker-item">✓ 100% Online</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <span class="ticker-item">✓ Desde 2017</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <span class="ticker-item">✓ +5.000 Alunos Formados</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <span class="ticker-item">✓ Método Próprio</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <span class="ticker-item">✓ Suporte Completo</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+    <span class="ticker-item">✓ Estude no seu ritmo</span>
+    <span class="ticker-sep" aria-hidden="true"></span>
+  </div>
+</div>
+
+
+<!-- ================================================================
+     MÉTODO
+================================================================ -->
+<section id="metodo" aria-labelledby="metodo-title">
+  <div class="container">
+    <div class="metodo-grid">
+
+      <!-- Esquerda: passos -->
+      <div>
+        <p class="section-eyebrow reveal">Nosso Método</p>
+        <h2 class="section-title reveal reveal-d1" id="metodo-title">
+          Um método criado para quem não tem tempo a perder.
+        </h2>
+        <p class="section-sub reveal reveal-d2">
+          Desenvolvemos uma abordagem própria que respeita a rotina de quem trabalha, cuida da família e ainda quer conquistar o diploma.
+        </p>
+
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h4>Diagnóstico inicial</h4>
+              <!-- [PLACEHOLDER: descreva o que acontece na etapa 1 do método] -->
+              <p class="placeholder-block">[PLACEHOLDER — descreva o que acontece nesta etapa: ex: avaliação de conhecimento prévio, mapeamento de lacunas, personalização da jornada]</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-d1">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h4>Trilha personalizada</h4>
+              <!-- [PLACEHOLDER: descreva a etapa 2 do método] -->
+              <p class="placeholder-block">[PLACEHOLDER — descreva como funciona a trilha: ex: plano de estudos adaptado ao perfil e disponibilidade de tempo do aluno]</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-d2">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h4>Aulas e materiais</h4>
+              <!-- [PLACEHOLDER: descreva a etapa 3 do método] -->
+              <p class="placeholder-block">[PLACEHOLDER — descreva os recursos disponíveis: ex: videoaulas, apostilas digitais, exercícios práticos, simulados]</p>
+            </div>
+          </div>
+          <div class="step reveal reveal-d3">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h4>Avaliação e certificação</h4>
+              <!-- [PLACEHOLDER: descreva a etapa 4 do método] -->
+              <p class="placeholder-block">[PLACEHOLDER — descreva como são as avaliações e a emissão do certificado MEC]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Direita: card escuro -->
+      <div>
+        <div class="metodo-card reveal">
+          <div class="metodo-card-hd">
+            <div class="metodo-card-icon" aria-hidden="true">📘</div>
+            <h3>A diferença do nosso método</h3>
+          </div>
+          <!-- [PLACEHOLDER: descreva o diferencial pedagógico da empresa — 3 a 5 parágrafos sobre a filosofia de ensino] -->
+          <p class="lead">Por que nosso método funciona para adultos que precisam concluir o Ensino Médio?</p>
+          <div class="placeholder-block" style="color:rgba(255,252,249,0.5);border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.04);">
+            <strong style="color:rgba(255,252,249,0.75);display:block;margin-bottom:10px;">[PLACEHOLDER — Descreva seu método aqui]</strong>
+            Substitua este bloco pela descrição completa da abordagem pedagógica da empresa. Sugestão de conteúdo: origem do método, princípios de aprendizagem para adultos, diferenciais em relação a cursos comuns, depoimento de resultado ou dado de eficácia (ex: "X% dos alunos conclui em menos de Y meses").
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     COMO FUNCIONA
+================================================================ -->
+<section id="como-funciona" aria-labelledby="como-title">
+  <div class="container">
+    <div class="como-hd">
+      <p class="section-eyebrow reveal">Passo a passo</p>
+      <h2 class="section-title reveal reveal-d1" id="como-title">Como funciona</h2>
+      <p class="section-sub reveal reveal-d2">Do cadastro ao diploma, o processo é simples, rápido e totalmente online.</p>
+    </div>
+
+    <div class="como-grid">
+      <div class="como-line" aria-hidden="true"></div>
+
+      <div class="como-card reveal">
+        <div class="como-num">1</div>
+        <h4>Matrícula Online</h4>
+        <p>Faça sua matrícula em minutos, direto pelo celular ou computador. Sem burocracia, sem filas.</p>
+      </div>
+      <div class="como-card reveal reveal-d1">
+        <div class="como-num">2</div>
+        <h4>Acesso às Aulas</h4>
+        <p>Acesse a plataforma imediatamente após a matrícula. Estude quando e onde quiser.</p>
+      </div>
+      <div class="como-card reveal reveal-d2">
+        <div class="como-num">3</div>
+        <h4>Provas e Avaliações</h4>
+        <p>Realize as avaliações online, no seu próprio ritmo, sem pressão de datas rígidas.</p>
+      </div>
+      <div class="como-card reveal reveal-d3">
+        <div class="como-num">4</div>
+        <h4>Certificado MEC</h4>
+        <p>Receba seu diploma com validade nacional, reconhecido pelo MEC e aceito em todo o Brasil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     VALORES
+================================================================ -->
+<section id="valores" aria-labelledby="valores-title">
+  <div class="container">
+    <div class="valores-hd">
+      <p class="section-eyebrow reveal">Quem somos</p>
+      <h2 class="section-title reveal reveal-d1" id="valores-title">Nossos valores</h2>
+      <!-- [PLACEHOLDER: subtítulo da seção de valores] -->
+      <p class="section-sub reveal reveal-d2">[PLACEHOLDER — insira um subtítulo que apresente os valores da empresa em uma frase]</p>
+    </div>
+
+    <div class="valores-grid">
+      <!-- [PLACEHOLDER: Card 1 — inserir valor real: título, emoji e descrição] -->
+      <div class="valor-card reveal">
+        <div class="valor-icon" aria-hidden="true">🎯</div>
+        <h4 class="placeholder-block" style="border-style:dashed;display:inline-block;width:100%;">[PLACEHOLDER — Título do Valor 1]</h4>
+        <p class="placeholder-block" style="margin-top:10px;">[PLACEHOLDER — Descreva o primeiro valor da empresa em 2–3 frases. Ex: Compromisso, Transparência, Acessibilidade...]</p>
+      </div>
+      <!-- [PLACEHOLDER: Card 2 — inserir valor real: título, emoji e descrição] -->
+      <div class="valor-card reveal reveal-d1">
+        <div class="valor-icon" aria-hidden="true">🤝</div>
+        <h4 class="placeholder-block" style="border-style:dashed;display:inline-block;width:100%;">[PLACEHOLDER — Título do Valor 2]</h4>
+        <p class="placeholder-block" style="margin-top:10px;">[PLACEHOLDER — Descreva o segundo valor da empresa em 2–3 frases. Ex: Humanidade, Confiança, Inovação...]</p>
+      </div>
+      <!-- [PLACEHOLDER: Card 3 — inserir valor real: título, emoji e descrição] -->
+      <div class="valor-card reveal reveal-d2">
+        <div class="valor-icon" aria-hidden="true">🌱</div>
+        <h4 class="placeholder-block" style="border-style:dashed;display:inline-block;width:100%;">[PLACEHOLDER — Título do Valor 3]</h4>
+        <p class="placeholder-block" style="margin-top:10px;">[PLACEHOLDER — Descreva o terceiro valor da empresa em 2–3 frases. Ex: Crescimento, Inclusão, Qualidade...]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     DEPOIMENTOS
+================================================================ -->
+<section id="depoimentos" aria-labelledby="depo-title">
+  <div class="container">
+    <div class="depo-hd">
+      <p class="section-eyebrow reveal">Quem já formou</p>
+      <h2 class="section-title reveal reveal-d1" id="depo-title">O que nossos alunos dizem</h2>
+      <p class="section-sub reveal reveal-d2">Histórias reais de quem conquistou o diploma e mudou de vida.</p>
+    </div>
+
+    <div class="depo-grid">
+      <!-- [PLACEHOLDER: Depoimento 1 — inserir texto real, inicial, nome e cidade/estado do aluno] -->
+      <div class="depo-card reveal">
+        <div class="depo-stars" aria-label="5 estrelas">★★★★★</div>
+        <p class="depo-text">
+          <span class="placeholder-block">[PLACEHOLDER — Insira o depoimento real do aluno 1 aqui. Ex: "Achei que nunca ia conseguir terminar o Ensino Médio, mas o método foi diferente de tudo que já tinha visto..."]</span>
+        </p>
+        <div class="depo-author">
+          <div class="depo-avatar" aria-hidden="true">A</div><!-- [PLACEHOLDER: inicial do aluno] -->
+          <div class="depo-meta">
+            <strong class="placeholder-block" style="display:block;">[PLACEHOLDER — Nome do Aluno 1]</strong>
+            <span class="placeholder-block" style="margin-top:4px;display:block;">[Cidade, Estado]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- [PLACEHOLDER: Depoimento 2 — inserir texto real, inicial, nome e cidade/estado do aluno] -->
+      <div class="depo-card reveal reveal-d1">
+        <div class="depo-stars" aria-label="5 estrelas">★★★★★</div>
+        <p class="depo-text">
+          <span class="placeholder-block">[PLACEHOLDER — Insira o depoimento real do aluno 2. Ex: "O suporte da equipe foi incrível. Sempre que tive dúvidas, alguém me respondia rapidinho..."]</span>
+        </p>
+        <div class="depo-author">
+          <div class="depo-avatar" aria-hidden="true">B</div><!-- [PLACEHOLDER: inicial do aluno] -->
+          <div class="depo-meta">
+            <strong class="placeholder-block" style="display:block;">[PLACEHOLDER — Nome do Aluno 2]</strong>
+            <span class="placeholder-block" style="margin-top:4px;display:block;">[Cidade, Estado]</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- [PLACEHOLDER: Depoimento 3 — inserir texto real, inicial, nome e cidade/estado do aluno] -->
+      <div class="depo-card reveal reveal-d2">
+        <div class="depo-stars" aria-label="5 estrelas">★★★★★</div>
+        <p class="depo-text">
+          <span class="placeholder-block">[PLACEHOLDER — Insira o depoimento real do aluno 3. Ex: "Com o diploma consegui a promoção que tanto queria. Recomendo demais para quem precisa do certificado rápido..."]</span>
+        </p>
+        <div class="depo-author">
+          <div class="depo-avatar" aria-hidden="true">C</div><!-- [PLACEHOLDER: inicial do aluno] -->
+          <div class="depo-meta">
+            <strong class="placeholder-block" style="display:block;">[PLACEHOLDER — Nome do Aluno 3]</strong>
+            <span class="placeholder-block" style="margin-top:4px;display:block;">[Cidade, Estado]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     SOBRE NÓS
+================================================================ -->
+<section id="sobre" aria-labelledby="sobre-title">
+  <div class="container">
+    <div class="sobre-grid">
+
+      <div class="reveal">
+        <div class="sobre-card">
+          <p class="since">Fundado</p>
+          <p class="year">2017</p>
+          <!-- [PLACEHOLDER: tagline curta e marcante da empresa] -->
+          <p class="tag"><span class="placeholder-block" style="color:rgba(255,252,249,0.7);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.07);">[PLACEHOLDER — tagline curta, ex: "Transformando vidas com educação acessível"]</span></p>
+        </div>
+      </div>
+
+      <div class="sobre-right">
+        <p class="section-eyebrow reveal">Nossa história</p>
+        <h2 class="section-title reveal reveal-d1" id="sobre-title">Sobre o Supletivo Rápido</h2>
+        <!-- [PLACEHOLDER: história da empresa — 2 a 4 parágrafos] -->
+        <p class="reveal reveal-d2">
+          <span class="placeholder-block">[PLACEHOLDER — Escreva a história da empresa em 2–4 parágrafos. Inclua: quando e por que surgiu, qual problema resolve, missão central. Ex: "O Supletivo Rápido nasceu em 2017 com uma missão clara: tornar a conclusão do Ensino Médio acessível para todo brasileiro que precisou interromper os estudos..."]</span>
+        </p>
+
+        <div class="sobre-diffs reveal reveal-d3">
+          <!-- [PLACEHOLDER: 3 diferenciais reais da empresa] -->
+          <div class="sobre-diff">
+            <div class="check-circle" aria-hidden="true">✓</div>
+            <span class="placeholder-block">[PLACEHOLDER — Diferencial 1: ex: Mais de X mil alunos formados em todo o Brasil]</span>
+          </div>
+          <div class="sobre-diff">
+            <div class="check-circle" aria-hidden="true">✓</div>
+            <span class="placeholder-block">[PLACEHOLDER — Diferencial 2: ex: Certificado aceito em concursos públicos, faculdades e no exterior]</span>
+          </div>
+          <div class="sobre-diff">
+            <div class="check-circle" aria-hidden="true">✓</div>
+            <span class="placeholder-block">[PLACEHOLDER — Diferencial 3: ex: Suporte via WhatsApp 7 dias por semana com resposta em até X horas]</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CERTIFICADO MEC
+================================================================ -->
+<section id="certificado" aria-labelledby="cert-title">
+  <div class="container">
+    <div class="cert-wrap">
+      <div class="cert-card reveal">
+        <div class="cert-icon" aria-hidden="true">🎓</div>
+        <h2 class="cert-title" id="cert-title">Diploma reconhecido em todo o Brasil</h2>
+        <p class="cert-body">
+          O certificado emitido pelo Supletivo Rápido possui plena validade nacional, reconhecido pelo Ministério da Educação (MEC) e aceito em concursos públicos, processos seletivos de faculdades e empregadores em todo o território nacional.
+          <!-- [PLACEHOLDER: adicionar informação sobre apostilamento da Haia, se aplicável] -->
+        </p>
+        <div class="cert-badges">
+          <span class="cert-badge">✓ Reconhecido pelo MEC</span>
+          <!-- [PLACEHOLDER: verificar e adaptar o badge abaixo conforme os documentos emitidos] -->
+          <span class="cert-badge">✓ Validade Nacional</span>
+          <span class="cert-badge">✓ Aceito em Faculdades</span>
+          <span class="cert-badge">✓ Concursos Públicos</span>
+        </div>
+        <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener" class="btn-primary" style="margin:0 auto;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Tirar minhas dúvidas agora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     INVESTIMENTO
+================================================================ -->
+<section id="investimento" aria-labelledby="invest-title">
+  <div class="container">
+    <div class="invest-wrap">
+      <div class="invest-card reveal">
+        <div class="invest-badge">Melhor custo-benefício</div>
+
+        <p class="invest-from">A partir de</p>
+        <!-- [PLACEHOLDER: substituir pelo preço mensal real] -->
+        <p class="invest-price" id="invest-title"><sup>R$</sup>XX<span style="font-size:0.35em;vertical-align:middle;margin-left:4px;color:rgba(255,252,249,0.4)">/mês</span></p>
+        <!-- [PLACEHOLDER: detalhe de pagamento — ex: "ou R$ X.XXX à vista · sem juros"] -->
+        <p class="invest-price-note"><span class="placeholder-block" style="color:rgba(255,252,249,0.4);border-color:rgba(255,255,255,0.15);background:rgba(255,255,255,0.03);">[PLACEHOLDER — detalhe de pagamento: ex: "ou R$ X.XXX à vista · parcelamos em até X×"]</span></p>
+
+        <div class="invest-divider" aria-hidden="true"></div>
+
+        <div class="invest-perks">
+          <!-- [PLACEHOLDER: 4 benefícios inclusos no plano] -->
+          <div class="invest-perk">
+            <div class="invest-perk-ic" aria-hidden="true">✓</div>
+            <span class="placeholder-block" style="color:rgba(255,252,249,0.45);border-color:rgba(255,255,255,0.14);background:rgba(255,255,255,0.03);">[PLACEHOLDER — Benefício 1: ex: Acesso completo à plataforma com todas as disciplinas]</span>
+          </div>
+          <div class="invest-perk">
+            <div class="invest-perk-ic" aria-hidden="true">✓</div>
+            <span class="placeholder-block" style="color:rgba(255,252,249,0.45);border-color:rgba(255,255,255,0.14);background:rgba(255,255,255,0.03);">[PLACEHOLDER — Benefício 2: ex: Suporte por WhatsApp durante todo o curso]</span>
+          </div>
+          <div class="invest-perk">
+            <div class="invest-perk-ic" aria-hidden="true">✓</div>
+            <span class="placeholder-block" style="color:rgba(255,252,249,0.45);border-color:rgba(255,255,255,0.14);background:rgba(255,255,255,0.03);">[PLACEHOLDER — Benefício 3: ex: Material didático digital incluso]</span>
+          </div>
+          <div class="invest-perk">
+            <div class="invest-perk-ic" aria-hidden="true">✓</div>
+            <span class="placeholder-block" style="color:rgba(255,252,249,0.45);border-color:rgba(255,255,255,0.14);background:rgba(255,255,255,0.03);">[PLACEHOLDER — Benefício 4: ex: Emissão do certificado MEC sem custo adicional]</span>
+          </div>
+        </div>
+
+        <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener" class="btn-big">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Quero me matricular agora
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     FAQ
+================================================================ -->
+<section id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="faq-hd">
+      <p class="section-eyebrow reveal">Dúvidas frequentes</p>
+      <h2 class="section-title reveal reveal-d1" id="faq-title">Perguntas e respostas</h2>
+      <p class="section-sub reveal reveal-d2">Tudo o que você precisa saber antes de se matricular.</p>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a1">
+          O certificado é reconhecido pelo MEC?
+          <span class="faq-chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-body" id="faq-a1" role="region">
+          <div class="faq-body-inner">
+            <!-- [PLACEHOLDER: resposta sobre reconhecimento MEC] -->
+            <span class="placeholder-block">[PLACEHOLDER — Resposta: ex: "Sim. O diploma é reconhecido pelo MEC e possui validade em todo o território nacional, podendo ser usado em concursos públicos, processos seletivos de faculdades e exigências trabalhistas."]</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-d1">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a2">
+          Quanto tempo leva para concluir?
+          <span class="faq-chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-body" id="faq-a2" role="region">
+          <div class="faq-body-inner">
+            <!-- [PLACEHOLDER: resposta sobre prazo de conclusão] -->
+            <span class="placeholder-block">[PLACEHOLDER — Resposta: ex: "Em média nossos alunos concluem em X meses estudando X horas por semana. O prazo máximo é de X meses."]</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-d2">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a3">
+          Preciso ir presencialmente em algum momento?
+          <span class="faq-chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-body" id="faq-a3" role="region">
+          <div class="faq-body-inner">
+            <!-- [PLACEHOLDER: resposta sobre presencialidade] -->
+            <span class="placeholder-block">[PLACEHOLDER — Resposta: ex: "Não. Todo o processo — matrícula, aulas, avaliações e retirada do diploma — é realizado de forma 100% online. Você não precisa sair de casa em nenhum momento."]</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-d3">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a4">
+          Quem pode fazer o supletivo?
+          <span class="faq-chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-body" id="faq-a4" role="region">
+          <div class="faq-body-inner">
+            <!-- [PLACEHOLDER: resposta sobre elegibilidade] -->
+            <span class="placeholder-block">[PLACEHOLDER — Resposta: ex: "Pode se matricular qualquer pessoa que tenha concluído o Ensino Fundamental e tenha no mínimo X anos de idade. Atendemos todo o Brasil."]</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a5">
+          Como funciona o pagamento?
+          <span class="faq-chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-body" id="faq-a5" role="region">
+          <div class="faq-body-inner">
+            <!-- [PLACEHOLDER: resposta sobre formas de pagamento] -->
+            <span class="placeholder-block">[PLACEHOLDER — Resposta: ex: "Aceitamos cartão de crédito, boleto bancário e PIX. Você pode pagar mensalmente ou à vista com desconto. O acesso à plataforma é liberado imediatamente após a confirmação."]</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-d1">
+        <button class="faq-q" aria-expanded="false" aria-controls="faq-a6">
+          Posso usar o diploma para fazer faculdade ou concurso público?
+          <span class="faq-chevron" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          </span>
+        </button>
+        <div class="faq-body" id="faq-a6" role="region">
+          <div class="faq-body-inner">
+            <!-- [PLACEHOLDER: resposta sobre uso do diploma] -->
+            <span class="placeholder-block">[PLACEHOLDER — Resposta: ex: "Sim. O diploma é aceito em todas as faculdades e universidades do Brasil (públicas e privadas), bem como em concursos públicos federais, estaduais e municipais que exijam nível médio de escolaridade."]</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     CTA FINAL
+================================================================ -->
+<section id="cta-final" aria-labelledby="cta-title">
+  <div class="container">
+    <div class="cta-final-in">
+      <p class="cta-final-eyebrow reveal">Comece hoje</p>
+      <h2 class="cta-final-title reveal reveal-d1" id="cta-title">
+        Seu diploma está<br>a uma mensagem de distância.
+      </h2>
+      <!-- [PLACEHOLDER: subtítulo do CTA final — pode ser personalizado] -->
+      <p class="cta-final-sub reveal reveal-d2">
+        Fale com a nossa equipe agora e tire todas as suas dúvidas sem compromisso. A matrícula é rápida e o acesso é imediato.
+      </p>
+      <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener" class="btn-white reveal reveal-d3">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar agora no WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     FOOTER
+================================================================ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="#hero" class="nav-logo">Supletivo <span>Rápido</span></a>
+        <!-- [PLACEHOLDER: tagline curta para o rodapé] -->
+        <p class="footer-tagline"><span class="placeholder-block" style="color:rgba(255,252,249,0.38);border-color:rgba(255,255,255,0.15);background:rgba(255,255,255,0.03);">[PLACEHOLDER — tagline curta do rodapé: ex: "Ensino Médio 100% Online com Certificado MEC. Desde 2017 transformando vidas."]</span></p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="#metodo">Nosso Método</a></li>
+          <li><a href="#como-funciona">Como Funciona</a></li>
+          <li><a href="#valores">Valores</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#certificado">Certificado MEC</a></li>
+          <li><a href="#investimento">Investimento</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Contato</h5>
+        <ul>
+          <li><a href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener">WhatsApp</a></li>
+          <!-- [PLACEHOLDER: e-mail real de contato] -->
+          <li><a href="mailto:contato@example.com.br">[PLACEHOLDER — e-mail]</a></li>
+          <!-- [PLACEHOLDER: links das redes sociais reais] -->
+          <li><a href="#" target="_blank" rel="noopener">[PLACEHOLDER — Instagram]</a></li>
+          <li><a href="#" target="_blank" rel="noopener">[PLACEHOLDER — Facebook]</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-btm">
+      <p class="footer-copy">© 2025 Supletivo Rápido. Todos os direitos reservados.</p>
+      <nav class="footer-legal" aria-label="Links legais">
+        <!-- [PLACEHOLDER: links reais de política de privacidade e termos de uso] -->
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ================================================================
+     WHATSAPP FLUTUANTE
+     PLACEHOLDER: substituir 55XXXXXXXXXXX pelo número real (DDI + DDD + número)
+================================================================ -->
+<a href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener" class="wa-float" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+
+<!-- ================================================================
+     JAVASCRIPT
+================================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  /* --------------------------------------------------
+     Nav: add shadow on scroll
+  -------------------------------------------------- */
+  var nav = document.getElementById('nav');
+  function updateNav() {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  /* --------------------------------------------------
+     Hamburger: toggle mobile menu
+  -------------------------------------------------- */
+  var hamburger  = document.getElementById('hamburger');
+  var mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', function () {
+    var isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  mobileMenu.querySelectorAll('.mob-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* --------------------------------------------------
+     FAQ: accordion
+  -------------------------------------------------- */
+  document.querySelectorAll('.faq-item').forEach(function (item) {
+    var btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', function () {
+      var willOpen = !item.classList.contains('open');
+
+      /* Close all */
+      document.querySelectorAll('.faq-item').forEach(function (other) {
+        other.classList.remove('open');
+        other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+
+      /* Open clicked */
+      if (willOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* --------------------------------------------------
+     Scroll reveal: IntersectionObserver
+  -------------------------------------------------- */
+  var revealEls = document.querySelectorAll('.reveal');
+
+  if (!window.IntersectionObserver) {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+    return;
+  }
+
+  var observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -36px 0px' }
+  );
+
+  revealEls.forEach(function (el) { observer.observe(el); });
+}());
+</script>
+
+</body>
+</html>
