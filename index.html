@@ -235,6 +235,8 @@
     }
     .metodo-card-hd h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; line-height: 1.3; }
     .metodo-card p.lead { font-size: 0.875rem; color: rgba(255,252,249,0.55); line-height: 1.72; margin-bottom: 24px; }
+    .metodo-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .metodo-list li { font-size: 0.9rem; color: rgba(255,252,249,0.85); font-weight: 500; }
 
     /* ============================================================
        COMO FUNCIONA
@@ -266,6 +268,16 @@
     /* ============================================================
        VALORES
     ============================================================ */
+    /* Mais oportunidades */
+    #oportunidades { background: var(--off-white); padding: var(--section-py) 0; }
+    .oport-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+    .oport-icons { display: flex; justify-content: center; gap: 32px; margin-bottom: 36px; flex-wrap: wrap; }
+    .oport-icon-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .oport-icon-item span { font-size: 1.75rem; }
+    .oport-icon-item p { font-size: 0.75rem; font-weight: 600; color: var(--gray-mid); text-transform: uppercase; letter-spacing: 0.08em; }
+    #oportunidades .section-title { margin-bottom: 16px; }
+    #oportunidades .section-sub { margin-bottom: 36px; }
+
     #valores { background: var(--white-warm); padding: var(--section-py) 0; }
     .valores-hd { text-align: center; max-width: 520px; margin: 0 auto 64px; }
     .valores-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
@@ -586,7 +598,7 @@
       </h1>
 
       <p class="hero-subtitle reveal reveal-d2">
-        Diploma reconhecido pelo MEC, método próprio e suporte completo para quem precisa concluir os estudos sem abrir mão da rotina.
+        O método mais rápido do Brasil para concluir o Ensino Médio. Diploma e histórico escolar reconhecidos pelo MEC — sem burocracia, sem complicação.
       </p>
 
       <div class="hero-actions reveal reveal-d3">
@@ -626,35 +638,34 @@
 ================================================================ -->
 <div id="ticker" role="marquee" aria-label="Destaques do Supletivo Rápido">
   <div class="ticker-track">
-    <span class="ticker-item">✓ Certificado MEC</span>
+    <span class="ticker-item">✓ O Supletivo Mais Rápido do Brasil</span>
     <span class="ticker-sep" aria-hidden="true"></span>
-    <span class="ticker-item">✓ 100% Online</span>
+    <span class="ticker-item">✓ Diploma e Histórico Escolar MEC</span>
     <span class="ticker-sep" aria-hidden="true"></span>
     <span class="ticker-item">✓ Desde 2017</span>
     <span class="ticker-sep" aria-hidden="true"></span>
-    <!-- [PLACEHOLDER: número real de alunos formados] -->
-    <span class="ticker-item">✓ +5.000 Alunos Formados</span>
+    <span class="ticker-item">✓ 100% Online e Sem Burocracia</span>
     <span class="ticker-sep" aria-hidden="true"></span>
-    <span class="ticker-item">✓ Método Próprio</span>
+    <span class="ticker-item">✓ Atendimento Humanizado</span>
     <span class="ticker-sep" aria-hidden="true"></span>
-    <span class="ticker-item">✓ Suporte Completo</span>
+    <span class="ticker-item">✓ Conclusão em Tempo Recorde</span>
     <span class="ticker-sep" aria-hidden="true"></span>
-    <span class="ticker-item">✓ Estude no seu ritmo</span>
+    <span class="ticker-item">✓ Método Pensado para Adultos</span>
     <span class="ticker-sep" aria-hidden="true"></span>
     <!-- Duplicata para loop contínuo -->
-    <span class="ticker-item">✓ Certificado MEC</span>
+    <span class="ticker-item">✓ O Supletivo Mais Rápido do Brasil</span>
     <span class="ticker-sep" aria-hidden="true"></span>
-    <span class="ticker-item">✓ 100% Online</span>
+    <span class="ticker-item">✓ Diploma e Histórico Escolar MEC</span>
     <span class="ticker-sep" aria-hidden="true"></span>
     <span class="ticker-item">✓ Desde 2017</span>
     <span class="ticker-sep" aria-hidden="true"></span>
-    <span class="ticker-item">✓ +5.000 Alunos Formados</span>
+    <span class="ticker-item">✓ 100% Online e Sem Burocracia</span>
     <span class="ticker-sep" aria-hidden="true"></span>
-    <span class="ticker-item">✓ Método Próprio</span>
+    <span class="ticker-item">✓ Atendimento Humanizado</span>
     <span class="ticker-sep" aria-hidden="true"></span>
-    <span class="ticker-item">✓ Suporte Completo</span>
+    <span class="ticker-item">✓ Conclusão em Tempo Recorde</span>
     <span class="ticker-sep" aria-hidden="true"></span>
-    <span class="ticker-item">✓ Estude no seu ritmo</span>
+    <span class="ticker-item">✓ Método Pensado para Adultos</span>
     <span class="ticker-sep" aria-hidden="true"></span>
   </div>
 </div>
@@ -681,33 +692,29 @@
           <div class="step reveal">
             <div class="step-num">1</div>
             <div class="step-body">
-              <h4>Diagnóstico inicial</h4>
-              <!-- [PLACEHOLDER: descreva o que acontece na etapa 1 do método] -->
-              <p class="placeholder-block">[PLACEHOLDER — descreva o que acontece nesta etapa: ex: avaliação de conhecimento prévio, mapeamento de lacunas, personalização da jornada]</p>
+              <h4>Análise do seu perfil</h4>
+              <p>Fazemos uma análise rápida para entender sua situação e orientar o caminho mais ágil para a conclusão. Tudo online, sem burocracia.</p>
             </div>
           </div>
           <div class="step reveal reveal-d1">
             <div class="step-num">2</div>
             <div class="step-body">
-              <h4>Trilha personalizada</h4>
-              <!-- [PLACEHOLDER: descreva a etapa 2 do método] -->
-              <p class="placeholder-block">[PLACEHOLDER — descreva como funciona a trilha: ex: plano de estudos adaptado ao perfil e disponibilidade de tempo do aluno]</p>
+              <h4>Processo adaptado à sua rotina</h4>
+              <p>Nosso método foi desenvolvido para quem trabalha ou tem pouco tempo disponível — para concluir o Ensino Médio da maneira mais rápida do Brasil.</p>
             </div>
           </div>
           <div class="step reveal reveal-d2">
             <div class="step-num">3</div>
             <div class="step-body">
-              <h4>Aulas e materiais</h4>
-              <!-- [PLACEHOLDER: descreva a etapa 3 do método] -->
-              <p class="placeholder-block">[PLACEHOLDER — descreva os recursos disponíveis: ex: videoaulas, apostilas digitais, exercícios práticos, simulados]</p>
+              <h4>Acompanhamento completo</h4>
+              <p>Tenha suporte da nossa equipe durante todo o processo, com orientações organizadas para acelerar cada etapa.</p>
             </div>
           </div>
           <div class="step reveal reveal-d3">
             <div class="step-num">4</div>
             <div class="step-body">
-              <h4>Avaliação e certificação</h4>
-              <!-- [PLACEHOLDER: descreva a etapa 4 do método] -->
-              <p class="placeholder-block">[PLACEHOLDER — descreva como são as avaliações e a emissão do certificado MEC]</p>
+              <h4>Diploma e Histórico Escolar</h4>
+              <p>Ao concluir todas as etapas, você recebe seu diploma acompanhado do histórico escolar — ambos reconhecidos pelo MEC.</p>
             </div>
           </div>
         </div>
@@ -717,15 +724,18 @@
       <div>
         <div class="metodo-card reveal">
           <div class="metodo-card-hd">
-            <div class="metodo-card-icon" aria-hidden="true">📘</div>
-            <h3>A diferença do nosso método</h3>
+            <div class="metodo-card-icon" aria-hidden="true">🎓</div>
+            <h3>Método desenvolvido para adultos com rotina corrida</h3>
           </div>
-          <!-- [PLACEHOLDER: descreva o diferencial pedagógico da empresa — 3 a 5 parágrafos sobre a filosofia de ensino] -->
-          <p class="lead">Por que nosso método funciona para adultos que precisam concluir o Ensino Médio?</p>
-          <div class="placeholder-block" style="color:rgba(255,252,249,0.5);border-color:rgba(255,255,255,0.2);background:rgba(255,255,255,0.04);">
-            <strong style="color:rgba(255,252,249,0.75);display:block;margin-bottom:10px;">[PLACEHOLDER — Descreva seu método aqui]</strong>
-            Substitua este bloco pela descrição completa da abordagem pedagógica da empresa. Sugestão de conteúdo: origem do método, princípios de aprendizagem para adultos, diferenciais em relação a cursos comuns, depoimento de resultado ou dado de eficácia (ex: "X% dos alunos conclui em menos de Y meses").
-          </div>
+          <p class="lead">Sabemos que muitas pessoas interromperam os estudos por trabalho, família ou outras responsabilidades. Nosso objetivo é tornar o processo mais simples, organizado e acessível para quem deseja concluir essa etapa importante da vida.</p>
+          <p class="lead" style="margin-bottom:28px;">Nosso diferencial está na praticidade e no acompanhamento durante toda a jornada.</p>
+          <ul class="metodo-list">
+            <li>✔️ Supletivo mais rápido do Brasil</li>
+            <li>✔️ Conclusão em tempo recorde</li>
+            <li>✔️ Processo totalmente online</li>
+            <li>✔️ Método pensado para adultos</li>
+            <li>✔️ Atendimento rápido e humanizado</li>
+          </ul>
         </div>
       </div>
 
@@ -751,23 +761,50 @@
       <div class="como-card reveal">
         <div class="como-num">1</div>
         <h4>Matrícula Online</h4>
-        <p>Faça sua matrícula em minutos, direto pelo celular ou computador. Sem burocracia, sem filas.</p>
+        <p>Faça sua matrícula em poucos minutos direto pelo celular. Processo simples e rápido.</p>
       </div>
       <div class="como-card reveal reveal-d1">
         <div class="como-num">2</div>
-        <h4>Acesso às Aulas</h4>
-        <p>Acesse a plataforma imediatamente após a matrícula. Estude quando e onde quiser.</p>
+        <h4>Acesso à Plataforma</h4>
+        <p>Receba acesso ao ambiente digital e acompanhe todas as orientações necessárias.</p>
       </div>
       <div class="como-card reveal reveal-d2">
         <div class="como-num">3</div>
-        <h4>Provas e Avaliações</h4>
-        <p>Realize as avaliações online, no seu próprio ritmo, sem pressão de datas rígidas.</p>
+        <h4>Acompanhamento</h4>
+        <p>Nossa equipe acompanha você durante todo o processo para tirar dúvidas e auxiliar quando necessário.</p>
       </div>
       <div class="como-card reveal reveal-d3">
         <div class="como-num">4</div>
-        <h4>Certificado MEC</h4>
-        <p>Receba seu diploma com validade nacional, reconhecido pelo MEC e aceito em todo o Brasil.</p>
+        <h4>Conclusão</h4>
+        <p>Finalize sua jornada e dê o próximo passo para oportunidades profissionais e acadêmicas.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================================================================
+     MAIS OPORTUNIDADES
+================================================================ -->
+<section id="oportunidades" aria-labelledby="oport-title">
+  <div class="container">
+    <div class="oport-inner">
+      <div class="oport-icons reveal">
+        <div class="oport-icon-item"><span>💼</span><p>Emprego</p></div>
+        <div class="oport-icon-item"><span>🏛️</span><p>Concurso Público</p></div>
+        <div class="oport-icon-item"><span>🎓</span><p>Faculdade</p></div>
+        <div class="oport-icon-item"><span>📋</span><p>Curso Técnico</p></div>
+      </div>
+      <h2 class="section-title reveal reveal-d1" id="oport-title">
+        Mais oportunidades começam com o<br>Ensino Médio concluído
+      </h2>
+      <p class="section-sub reveal reveal-d2">
+        Muitas vagas de emprego, concursos públicos, cursos técnicos e faculdades exigem a conclusão do Ensino Médio. Dê o próximo passo na sua trajetória.
+      </p>
+      <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener" class="btn-primary reveal reveal-d3" style="display:inline-flex;margin:0 auto;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar com um consultor
+      </a>
     </div>
   </div>
 </section>
