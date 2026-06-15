@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Transparência — Supletivo Rápido</title>
+  <meta name="description" content="Termo de Transparência Educacional e Natureza dos Serviços do Supletivo Rápido.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --orange:      #F47920;
+      --orange-dark: #D96510;
+      --black:       #111010;
+      --white-warm:  #FFFCF9;
+      --off-white:   #F5F1EC;
+      --gray-mid:    #6B6B6B;
+      --gray-light:  #D4D0CB;
+      --font-display:'Fraunces', Georgia, serif;
+      --font-body:   'DM Sans', system-ui, sans-serif;
+      --radius:      12px;
+      --max-w:       760px;
+      --transition:  0.3s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-body); color: var(--black); background: var(--white-warm); }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--black);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 72px;
+    }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.25rem; font-weight: 700;
+      color: var(--white-warm); letter-spacing: -0.02em;
+    }
+    .nav-logo span { font-style: italic; color: var(--orange); }
+    .btn-nav {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; background: var(--orange);
+      color: var(--white-warm); font-size: 0.875rem; font-weight: 600;
+      border-radius: 8px; transition: background var(--transition);
+    }
+    .btn-nav:hover { background: var(--orange-dark); }
+
+    /* ── HERO DO DOCUMENTO ── */
+    .doc-hero {
+      background: var(--black) radial-gradient(circle at right center, rgba(255,127,39,.18), transparent 60%);
+      padding: 140px 24px 72px;
+      text-align: center;
+    }
+    .doc-hero-eyebrow {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .doc-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700; color: var(--white-warm);
+      line-height: 1.2; letter-spacing: -0.03em;
+      max-width: 680px; margin: 0 auto 20px;
+    }
+    .doc-hero-sub {
+      font-size: 0.95rem; color: rgba(255,252,249,0.5);
+      max-width: 480px; margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── DOCUMENTO ── */
+    .doc-wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 72px 24px 96px;
+    }
+
+    /* Bloco de aviso destacado */
+    .doc-notice {
+      background: var(--off-white);
+      border-left: 4px solid var(--orange);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 28px;
+      margin-bottom: 56px;
+      font-size: 0.95rem;
+      color: var(--gray-mid);
+      line-height: 1.75;
+    }
+    .doc-notice strong { color: var(--black); }
+
+    /* Seções */
+    .doc-section { margin-bottom: 52px; }
+
+    .doc-section-num {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .doc-section-num::before {
+      content: '';
+      display: block; width: 24px; height: 2px;
+      background: var(--orange); border-radius: 1px;
+    }
+
+    .doc-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.35rem; font-weight: 700;
+      color: var(--black); letter-spacing: -0.02em;
+      margin-bottom: 16px; line-height: 1.3;
+    }
+
+    .doc-section p {
+      font-size: 0.975rem; color: var(--gray-mid);
+      line-height: 1.8; margin-bottom: 14px;
+    }
+    .doc-section p:last-child { margin-bottom: 0; }
+    .doc-section p strong { color: var(--black); font-weight: 600; }
+
+    /* Lista de itens */
+    .doc-list {
+      display: flex; flex-direction: column; gap: 12px;
+      margin-top: 4px;
+    }
+    .doc-list-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 0.95rem; color: var(--gray-mid); line-height: 1.7;
+    }
+    .doc-list-item::before {
+      content: '';
+      flex-shrink: 0;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--orange); margin-top: 8px;
+    }
+
+    /* Declaração do aluno — card destacado */
+    .doc-declaration {
+      background: var(--black);
+      border-radius: 16px;
+      padding: 36px 36px;
+      margin-top: 8px;
+    }
+    .doc-declaration p {
+      color: rgba(255,252,249,0.55);
+      margin-bottom: 20px;
+    }
+    .doc-declaration p:last-child { margin-bottom: 0; }
+    .doc-declaration ul { display: flex; flex-direction: column; gap: 14px; margin-top: 4px; }
+    .doc-declaration li {
+      display: flex; align-items: flex-start; gap: 14px;
+      font-size: 0.925rem; color: rgba(255,252,249,0.65); line-height: 1.7;
+    }
+    .doc-declaration li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--orange); margin-top: 8px;
+    }
+
+    /* Divisor */
+    .doc-divider {
+      width: 100%; height: 1px;
+      background: var(--gray-light);
+      margin: 52px 0;
+      border: none;
+    }
+
+    /* Compromisso final */
+    .doc-commitment {
+      background: var(--off-white);
+      border-radius: 16px;
+      padding: 36px;
+      display: flex; gap: 20px; align-items: flex-start;
+    }
+    .doc-commitment-icon {
+      flex-shrink: 0;
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(244,121,32,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.375rem;
+    }
+    .doc-commitment-body h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--black); margin-bottom: 10px;
+    }
+    .doc-commitment-body p {
+      font-size: 0.9rem; color: var(--gray-mid); line-height: 1.72;
+    }
+
+    /* Data de atualização */
+    .doc-updated {
+      text-align: center;
+      font-size: 0.8rem; color: var(--gray-light);
+      margin-top: 56px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      padding: 36px 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+      color: var(--white-warm); letter-spacing: -0.02em;
+      display: inline-block; margin-bottom: 10px;
+    }
+    .footer-logo span { font-style: italic; color: var(--orange); }
+    .footer-copy { font-size: 0.78rem; color: rgba(255,252,249,0.28); }
+    .footer-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 16px;
+      font-size: 0.8rem; color: rgba(255,252,249,0.4);
+      transition: color var(--transition);
+    }
+    .footer-back:hover { color: var(--orange); }
+
+    @media (max-width: 600px) {
+      .doc-commitment { flex-direction: column; gap: 14px; }
+      .btn-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">Supletivo <span>Rápido</span></a>
+    <a href="https://wa.me/55XXXXXXXXXXX" target="_blank" rel="noopener" class="btn-nav">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Falar no WhatsApp
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="doc-hero">
+  <span class="doc-hero-eyebrow">Documento Institucional</span>
+  <h1 class="doc-hero-title">Termo de Transparência Educacional e Natureza dos Serviços</h1>
+  <p class="doc-hero-sub">Leia com atenção as informações sobre a natureza dos serviços prestados pelo Supletivo Rápido.</p>
+</div>
+
+<!-- DOCUMENTO -->
+<main class="doc-wrap">
+
+  <!-- Aviso inicial -->
+  <div class="doc-notice">
+    <strong>Importante:</strong> O Supletivo Rápido atua exclusivamente na prestação de serviços de suporte pedagógico, orientação educacional, cursos preparatórios e assistência administrativa para candidatos que buscam a conclusão do Ensino Médio. A leitura integral deste termo é parte essencial do processo de matrícula.
+  </div>
+
+  <!-- 1. Natureza dos Serviços -->
+  <div class="doc-section">
+    <span class="doc-section-num">Seção 01</span>
+    <h2>Natureza dos Serviços</h2>
+    <p>O <strong>Supletivo Rápido</strong> presta serviços de natureza estritamente <strong>educacional, pedagógica e administrativa</strong>, compreendendo:</p>
+    <div class="doc-list">
+      <div class="doc-list-item">Acesso à plataforma de orientação e acompanhamento educacional</div>
+      <div class="doc-list-item">Suporte ao aluno durante todo o processo</div>
+      <div class="doc-list-item">Orientação sobre os caminhos para a conclusão do Ensino Médio</div>
+      <div class="doc-list-item">Intermediação administrativa junto às instituições parceiras devidamente autorizadas</div>
+    </div>
+  </div>
+
+  <!-- 2. Parcerias Institucionais -->
+  <div class="doc-section">
+    <span class="doc-section-num">Seção 02</span>
+    <h2>Parcerias Institucionais</h2>
+    <p>O Supletivo Rápido mantém <strong>parcerias e atuação administrativa exclusivamente com instituições educacionais legalmente autorizadas</strong> e organismos certificadores credenciados perante os órgãos competentes.</p>
+    <p>A emissão de diplomas, certificados e históricos escolares é de responsabilidade exclusiva das <strong>instituições certificadoras parceiras</strong>, não sendo realizada diretamente pelo Supletivo Rápido.</p>
+  </div>
+
+  <!-- 3. Declaração do Aluno -->
+  <div class="doc-section">
+    <span class="doc-section-num">Seção 03</span>
+    <h2>Ciência e Declaração do Aluno</h2>
+    <p>Ao contratar os serviços do Supletivo Rápido, o aluno declara estar ciente de que:</p>
+    <div class="doc-declaration">
+      <ul>
+        <li>A conclusão do Ensino Médio está condicionada ao cumprimento dos requisitos acadêmicos e regulatórios estabelecidos pelas instituições competentes.</li>
+        <li>A contratação dos serviços não representa a aquisição de um certificado ou diploma, mas sim o acesso a suporte educacional e acompanhamento administrativo.</li>
+        <li>Os prazos para emissão de documentos dependem exclusivamente das instituições certificadoras parceiras e dos órgãos reguladores competentes.</li>
+        <li>Eventuais alterações regulatórias promovidas por órgãos governamentais são independentes da atuação do Supletivo Rápido e não geram qualquer responsabilidade à contratada.</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="doc-divider">
+
+  <!-- 4. Compromisso Institucional -->
+  <div class="doc-section">
+    <span class="doc-section-num">Seção 04</span>
+    <h2>Compromisso Institucional</h2>
+    <div class="doc-commitment">
+      <div class="doc-commitment-icon" aria-hidden="true">🤝</div>
+      <div class="doc-commitment-body">
+        <h3>Nosso compromisso com você</h3>
+        <p>O Supletivo Rápido reafirma seu compromisso com a <strong>boa-fé, a transparência institucional, a conformidade legal</strong> e a conduta ética em todas as suas atividades. Atuamos dentro dos limites estabelecidos pela legislação educacional vigente, prezando sempre pelo melhor interesse dos nossos alunos.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="doc-updated">Última atualização: maio de 2026 · Supletivo Rápido</p>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo">Supletivo <span>Rápido</span></a>
+  <br>
+  <a href="/" class="footer-back">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+    Voltar para o site
+  </a>
+  <br><br>
+  <p class="footer-copy">© 2025 Supletivo Rápido. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
