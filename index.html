@@ -169,7 +169,7 @@
     .como-card:not(:last-child)::after { content: ''; position: absolute; top: 58px; right: -20px; width: 20px; height: 2px; background: rgba(244,121,32,.5); }
 
     /* oportunidades */
-    #oportunidades { background: var(--cream); padding: var(--py) 0; }
+    #oportunidades { background: var(--paper); padding: var(--py) 0; }
     .oport-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 0 auto 44px; max-width: 900px; }
     .oport-item { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 26px 16px; display: flex; flex-direction: column; align-items: center; gap: 14px; transition: transform .25s, box-shadow .25s; }
     .oport-item:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -22px rgba(18,17,16,.3); }
@@ -177,7 +177,7 @@
     .oport-item p { font-size: .82rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
 
     /* sobre */
-    #sobre { background: var(--paper); padding: var(--py) 0; }
+    #sobre { background: var(--cream); padding: var(--py) 0; }
     .sobre-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: center; }
     .sobre-card { position: relative; border-radius: 28px; background: var(--orange); color: #fff; padding: 56px 40px; text-align: center; overflow: hidden; isolation: isolate; }
     .sobre-card::before { content: ''; position: absolute; inset: 0; z-index: -1; background: repeating-linear-gradient(135deg, rgba(255,255,255,.07) 0 2px, transparent 2px 18px); }
@@ -186,7 +186,7 @@
     .sobre-card .tag { font-size: 1.05rem; font-weight: 600; opacity: .95; line-height: 1.5; }
     .sobre-right p.body { color: var(--muted); font-size: 1.02rem; line-height: 1.82; margin-bottom: 18px; }
     .diffs { display: grid; gap: 14px; margin-top: 30px; }
-    .diff { display: flex; gap: 14px; padding: 16px 18px; border-radius: 16px; background: var(--cream); font-size: .95rem; line-height: 1.6; }
+    .diff { display: flex; gap: 14px; padding: 16px 18px; border-radius: 16px; background: #fff; border: 1px solid var(--line); font-size: .95rem; line-height: 1.6; }
     .diff .chk { background: var(--orange); color: #fff; margin-top: 1px; }
 
     /* depoimento em vídeo */
@@ -463,6 +463,24 @@
   </div>
 </section>
 
+<!-- DEPOIMENTO -->
+<section id="depoimento">
+  <div class="container depo-grid">
+    <div class="depo-video reveal">
+      <video id="depo-v" src="/videos/depoimento.mp4" poster="/images/depoimento-capa.webp" preload="none" playsinline controls hidden></video>
+      <img src="/images/depoimento-capa.webp" alt="Depoimento em vídeo de uma aluna do Supletivo Rápido" loading="lazy" id="depo-capa">
+      <button class="depo-play" id="depo-play" aria-label="Assistir ao depoimento"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
+      <p class="depo-tag" id="depo-tag"><i></i> Depoimento real</p>
+    </div>
+    <div class="depo-copy">
+      <p class="eyebrow reveal">Depoimento</p>
+      <h2 class="h2 reveal d1">Quem fez, <em>recomenda</em></h2>
+      <p class="lead reveal d2">Veja o relato de quem já passou pelo Supletivo Rápido.</p>
+      <a href="https://wa.me/555192597468?text=Ol%C3%A1!%20Vim%20atrav%C3%A9s%20do%20site%20e%20quero%20saber%20mais%20sobre%20o%20Supletivo%20R%C3%A1pido." target="_blank" rel="noopener" class="btn btn-orange btn-lg reveal d3"><svg class="ico"><use href="#i-wa"/></svg> Quero o meu também</a>
+    </div>
+  </div>
+</section>
+
 <!-- OPORTUNIDADES -->
 <section id="oportunidades">
   <div class="container center">
@@ -498,24 +516,6 @@
         <div class="diff reveal d1"><span class="chk">✓</span><span>O <strong>supletivo mais rápido do Brasil</strong> — processo ágil, sem burocracia, pensado para quem não pode esperar.</span></div>
         <div class="diff reveal d2"><span class="chk">✓</span><span>Atendimento <strong>7 dias por semana</strong>, com resposta em até 1 hora.</span></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- DEPOIMENTO -->
-<section id="depoimento">
-  <div class="container depo-grid">
-    <div class="depo-video reveal">
-      <video id="depo-v" src="/videos/depoimento.mp4" poster="/images/depoimento-capa.webp" preload="none" playsinline controls hidden></video>
-      <img src="/images/depoimento-capa.webp" alt="Depoimento em vídeo de uma aluna do Supletivo Rápido" loading="lazy" id="depo-capa">
-      <button class="depo-play" id="depo-play" aria-label="Assistir ao depoimento"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></button>
-      <p class="depo-tag" id="depo-tag"><i></i> Depoimento real</p>
-    </div>
-    <div class="depo-copy">
-      <p class="eyebrow reveal">Depoimento</p>
-      <h2 class="h2 reveal d1">Quem fez, <em>recomenda</em></h2>
-      <p class="lead reveal d2">Veja o relato de quem já passou pelo Supletivo Rápido.</p>
-      <a href="https://wa.me/555192597468?text=Ol%C3%A1!%20Vim%20atrav%C3%A9s%20do%20site%20e%20quero%20saber%20mais%20sobre%20o%20Supletivo%20R%C3%A1pido." target="_blank" rel="noopener" class="btn btn-orange btn-lg reveal d3"><svg class="ico"><use href="#i-wa"/></svg> Quero o meu também</a>
     </div>
   </div>
 </section>
